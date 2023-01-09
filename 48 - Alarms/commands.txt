@@ -1,0 +1,28 @@
+========= Hands-On #1 ==========
+sudo vim /usr/lib/systemd/system/rabbitmq-server.service
+sudo systemctl daemon-reload
+sudo service rabbitmq-server restart
+
+LimitNOFILE=64000
+
+
+========= Hands-On #2 ==========
+sudo vim /etc/rabbitmq/rabbitmq-env.conf 
+
+RABBITMQ_SERVER_START_ARGS="+P 300000"
+
+
+========= Hands-On #3 ==========
+sudo vim /etc/rabbitmq/rabbitmq.conf 
+
+# vm_memory_high_watermark.relative = 0.8
+# vm_memory_high_watermark.absolute = 1073741824
+# vm_memory_high_watermark.absolute = 2GB
+
+# disk_free_limit.relative = 4.0
+# disk_free_limit.absolute = 50000
+# disk_free_limit.absolute = 42GB
+
+
+========= Hands-On #3 - PerfTest ==========
+./runjava com.rabbitmq.perf.PerfTest --producers 30 --consumers 1 --queue "q.test-1" --size 100000 --autoack --id "test 2"

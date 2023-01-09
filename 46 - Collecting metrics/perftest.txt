@@ -1,0 +1,6 @@
+./runjava com.rabbitmq.perf.PerfTest \
+--time 2000 \
+--queue-pattern 'q.perf-test-%d' --queue-pattern-from 1 --queue-pattern-to 3 \
+--producers 3 --rate 500 --consumers 3 \
+--size 10 --queue-args x-queue-mode=lazy --flag persistent \
+-h amqp://guest:guest@localhost:5672

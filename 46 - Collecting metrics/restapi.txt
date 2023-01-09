@@ -1,0 +1,10 @@
+curl -s -uguest:guest -XGET http://localhost:15672/api/overview | jq
+
+
+curl -s -uguest:guest -XGET 'http://localhost:15672/api/nodes/ | jq
+curl -s -uguest:guest -XGET 'http://localhost:15672/api/nodes/rabbit@zuko-Latitude?memory=true&binary=true' | jq
+
+
+curl -s -uguest:guest -XGET 'http://localhost:15672/api/queues/ | jq
+curl -s -uguest:guest -XGET 'http://localhost:15672/api/vhosts/ | jq
+curl -s -uguest:guest -XGET 'http://localhost:15672/api/exchanges/ | jq

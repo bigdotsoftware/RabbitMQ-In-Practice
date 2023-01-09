@@ -1,0 +1,5 @@
+curl -s -uguest:guest -XGET 'http://localhost:15672/api/nodes/rabbit@zuko-Latitude?memory=true&binary=true' | jq -r '{binary:{queue_procs:.binary.queue_procs}, memory:{queue_procs:.memory.queue_procs, total:.memory.total}}'
+
+./runjava com.rabbitmq.perf.PerfTest --pmessages 300000 --type fanout --exchange ex.perf-test --queue-pattern 'q.perf-test-%d' --queue-pattern-from 1 --queue-pattern-to 1 --producers 1 --consumers 0 --size 1000 --flag persistent -h amqp://guest:guest@localhost:5672
+
+./runjava com.rabbitmq.perf.PerfTest --pmessages 300000 --type fanout --exchange ex.perf-test --queue-pattern 'q.perf-test-%d' --queue-pattern-from 1 --queue-pattern-to 3 --producers 1 --consumers 0 --size 1000 --flag persistent -h amqp://guest:guest@localhost:5672
